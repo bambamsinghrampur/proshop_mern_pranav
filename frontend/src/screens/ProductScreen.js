@@ -16,17 +16,12 @@ const ProductScreen = ({ match }) => {
 const [product,setProduct] = useState([])
 
 useEffect(() => {
-
   const fetchProduct = async () => {
-
     const {data} =  await axios.get(`/api/products/${id}`)
-
     setProduct(data)
-  }
-      
+  }  
  fetchProduct()
-
-},[])
+},[id])
     return (
       <>
         <Link className='btn btn-light my-3' to='/'>
