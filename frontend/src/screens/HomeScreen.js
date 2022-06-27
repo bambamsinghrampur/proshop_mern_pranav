@@ -1,10 +1,30 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { Container,Row,Col } from 'react-bootstrap'
-import products from '../products'
 import Product from '../components/Product'
+import axios from 'axios'
 
 const HomeScreen = () => {
-  return (
+ 
+
+    //not use static products json but make a api calls
+
+const [products,setProducts] = useState([])
+
+useEffect(() => {
+
+  const fetchProducts = async () => {
+
+    const {data} = await axios.get('/api/products')
+
+    setProducts(data)
+  }
+      
+ fetchProducts()
+
+},[])
+
+return (
     <Container>
 <Row>
 {products.map( product => (
